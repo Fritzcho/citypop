@@ -1,20 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import HighlightButton from './src/constants/StandardButton';
+import Header from './src/components/Header';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text>Hello header!</Text>
-      </View>
+      <Header/>
       <View style={styles.body}>
-        <Text>
-          Lorum ipsum
-        </Text>
+        <Text>Hello World!</Text>
+        <HighlightButton content='Test button'/>
       </View>
-      <HighlightButton content='Test button'/>
-      <Text>Hello World!</Text>
     </View>
   );
 }
@@ -23,8 +19,6 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     backgroundColor: '#E7E7E7',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   header: {
     backgroundColor: 'green',
@@ -32,5 +26,6 @@ const styles = StyleSheet.create({
   },
   body: {
     backgroundColor: 'white',
+    padding: 40,
   }
 });

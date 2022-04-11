@@ -11,7 +11,7 @@ const HighlightButton = ({content}:ButtonProps) => {
 
   return (
     <View style={styles.container}>
-      <TouchableHighlight activeOpacity={0.5} underlayColor={'red'} 
+      <TouchableHighlight activeOpacity={0.5} underlayColor={'white'} 
       onPress={onPress} style={styles.highlight}>
         <View style={styles.button}>
           <Text style={styles.text}>{content}</Text>
@@ -28,14 +28,14 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: 'blue',
+    backgroundColor: 'lightblue',
     paddingHorizontal: 40,
     paddingVertical: 20,
     color: 'white',
     borderRadius: 30
   },
   text: {
-      color:'white',
+      color:'black',
   },
   highlight: {
       borderRadius: 30
