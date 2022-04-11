@@ -1,31 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
-import HighlightButton from './src/constants/StandardButton';
-import Header from './src/components/Header';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './src/screens/HomeScreen';
+import SearchByCity from './src/screens/SearchByCity';
+import SearchByCountry from './src/screens/SearchByCountry';
+import CityView from './src/screens/CityView';
+import CountriesView from './src/screens/CountriesView';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Header/>
-      <View style={styles.body}>
-        <Text>Hello World!</Text>
-        <HighlightButton content='Test button'/>
-      </View>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="SearchByCity" component={SearchByCity}/>
+        <Stack.Screen name="SearchByCountry" component={SearchByCountry}/>
+        <Stack.Screen name="CityView" component={CityView}/>
+        <Stack.Screen name="CountriesView" component={CountriesView}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor: '#E7E7E7',
-  },
-  header: {
-    backgroundColor: 'green',
-    padding: 40,
-  },
-  body: {
-    backgroundColor: 'white',
-    padding: 40,
-  }
-});
