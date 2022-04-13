@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View} from 'react-native';
 
-export default function CountriesView() {
+export default function CityScreen() {
     return (
       <View>
           <Text>
-              Countries
+              Cities
           </Text>
       </View>
     );

@@ -1,17 +1,16 @@
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
 import { TextInput, View, StyleSheet} from 'react-native';
-import Header from '../components/Header';
-import HighlightButton from '../constants/HighlightButton';
-import { StackRouter } from '../helper/StackRouter';
+import { Header, SearchButton} from '../components';
+import { StackRouter } from '../constants/StackRouter';
 
 const Stack = createNativeStackNavigator();
 
 const searchHandler = () => {
 }
 
-export default function SearchByCity({navigation}:StackRouter) {
+export default function SearchCityScreen({navigation}:StackRouter) {
     return (
       <View style={styles.container}>
         <View style={styles.headerContainer}>
@@ -26,7 +25,7 @@ export default function SearchByCity({navigation}:StackRouter) {
             />
           </View>
           <View style={[styles.btnContainer, styles.button]}>
-            <HighlightButton content='Search' route='CityView' navigation={navigation}/>
+            <SearchButton content='Search' route='City' navigation={navigation}/>
           </View>
         </View>
       </View>

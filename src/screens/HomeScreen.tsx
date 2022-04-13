@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import HighlightButton from '../constants/HighlightButton';
-import { StackRouter } from '../helper/StackRouter';
-import Header from '../components/Header';
+import { StackRouter } from '../constants/StackRouter';
+import {Header, NavigationButton} from '../components';
 
 const HomeScreen = ({navigation}:StackRouter) => {
     return (
@@ -10,10 +9,10 @@ const HomeScreen = ({navigation}:StackRouter) => {
             <Header content="CityPop"/>
             <View style={styles.body}>
                 <View style={styles.btnContainer}>
-                    <HighlightButton content='Search By City' route='SearchByCity' navigation={navigation}/>
+                    <NavigationButton content='Search By City' route='SearchCity' navigation={navigation}/>
                 </View>
                 <View style={styles.btnContainer}>
-                    <HighlightButton content='Search By Country' route='SearchByCountry' navigation={navigation}/>
+                    <NavigationButton content='Search By Country' route='SearchCountry' navigation={navigation}/>
                 </View>
             </View>       
         </View>
