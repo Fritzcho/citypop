@@ -25,7 +25,7 @@ export default function SearchCityScreen({navigation}:StackRouter) {
             />
           </View>
           <View style={[styles.btnContainer, styles.button]}>
-            <SearchButton content='Search' route='City' navigation={navigation}/>
+            <SearchButton content='Search' route='City' navigation={navigation} inputText={''}/>
           </View>
         </View>
       </View>
