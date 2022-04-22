@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
+        minHeight: 200,
     },
     headerText: {
         color: 'black',

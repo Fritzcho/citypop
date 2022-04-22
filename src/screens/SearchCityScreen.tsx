@@ -1,35 +1,33 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React, { useState } from 'react';
 import { TextInput, View, StyleSheet} from 'react-native';
 import { Header, SearchButton} from '../components';
 import { StackRouter } from '../constants/StackRouter';
 
-const Stack = createNativeStackNavigator();
-
-const searchHandler = () => {
-}
-
 export default function SearchCityScreen({navigation}:StackRouter) {
-    return (
-      <View style={styles.container}>
-        <View style={styles.headerContainer}>
-          <Header content="Search by city" />
+  const [inputText, setText] = useState('');
+  const searchHandler = (event: { nativeEvent: { text: any; }; }) => {
+  let temp = event.nativeEvent.text;
+    setText(temp);
+  }
+  return (
+    <View style={styles.container}>
+      <View style={styles.headerContainer}>
+        <Header content="Search by city" />
+      </View>
+      <View style={styles.innerContainer}>
+        <View style={styles.btnContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder='Enter a city...'
+            onChange={searchHandler}
+          />
         </View>
-        <View style={styles.innerContainer}>
-          <View style={styles.btnContainer}>
-            <TextInput
-              style={styles.input}
-              placeholder='Enter a city...'
-              onChangeText={searchHandler}
-            />
-          </View>
-          <View style={[styles.btnContainer, styles.button]}>
-            <SearchButton content='Search' route='City' navigation={navigation} inputText={''}/>
-          </View>
+        <View style={[styles.btnContainer, styles.button]}>
+          <SearchButton content='Search' route='City' navigation={navigation} inputText={inputText}/>
         </View>
       </View>
-    );
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

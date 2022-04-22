@@ -3,20 +3,20 @@ import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import {  StyleSheet, Text, TouchableHighlight, View } from "react-native";
 
 type ButtonProps = {
-    content: string,
-    route: string,
-    navigation: NavigationProp<ParamListBase>,
-    inputText: string
+  content: string,
+  route: string,
+  navigation: NavigationProp<ParamListBase>,
+  inputText: string
 }
 
-const SearchButton = ({content, route, navigation, inputText}:ButtonProps, ) => {
+const SearchButton = ({content, route, navigation, inputText}:ButtonProps) => {
   return (
     <TouchableHighlight activeOpacity={0.5} underlayColor={'white'} 
       onPress={() =>
         inputText
-          ? navigation.navigate(route, {inputText: inputText})
+          ? navigation.navigate(route, {inputText: inputText},)
           : alert('Please Input the text')
-      } 
+      }
       style={styles.buttonHighlight}>
       <View style={styles.button}>
         <Text style={styles.text}>{content}</Text>

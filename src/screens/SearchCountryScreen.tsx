@@ -9,7 +9,6 @@ export default function SearchCountryScreen({navigation}:StackRouter) {
   const searchHandler = (event: { nativeEvent: { text: any; }; }) => {
     let temp = event.nativeEvent.text;
     setText(temp);
-    console.log(temp)
   }
   return(
       <View style={styles.container}>
