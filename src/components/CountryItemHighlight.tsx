@@ -9,6 +9,14 @@ type ButtonProps = {
   inputText: string
 }
 
+/**
+ * Item that is used to render cities in a country as objects in the CountriesScreen 
+ * when a user has searched for a country. Upon click, it redirects the user to CityScreen
+ * to display the population of the city.
+ * 
+ * @param ButtonProps type containing props content, route, navigation and inputText 
+ * @returns 
+ */
 const CountryItemHighlight = ({content, route, navigation, inputText}:ButtonProps) => {
   return (
     <TouchableHighlight activeOpacity={0.5} underlayColor={'white'} 
