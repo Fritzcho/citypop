@@ -1,8 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { StackRouter } from '../constants/StackRouter';
 import {Header, NavigationButton} from '../components';
 
+/**
+ * React-Native component HomeScreen, the home screen of the applicaton.
+ * 
+ * @param navigation StackRouter containing a NavigationProp for navigation between screens
+ * @returns component
+ */
 const HomeScreen = ({navigation}:StackRouter) => {
     return (
         <View style={styles.container}>

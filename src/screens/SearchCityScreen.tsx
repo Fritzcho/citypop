@@ -3,12 +3,24 @@ import { TextInput, View, StyleSheet} from 'react-native';
 import { Header, SearchButton} from '../components';
 import { StackRouter } from '../constants/StackRouter';
 
+/**
+ * React-Native component SearchCityScreen where users can search for a city
+ * in the GeoNames API.
+ * 
+ * @param navigation StackRouter containging a navigation prop for navigation 
+ * @returns component
+ */
 export default function SearchCityScreen({navigation}:StackRouter) {
   const [inputText, setText] = useState('');
+
+  /**
+   * Handle the change of text made by the user. 
+   */
   const searchHandler = (event: { nativeEvent: { text: any; }; }) => {
   let temp = event.nativeEvent.text;
     setText(temp);
   }
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>

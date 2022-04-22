@@ -1,3 +1,6 @@
+/**
+ * Interface geonames used to fetch data from GeoNames API
+ */
 export interface geonames {
     adminCode: string,
     lng: string,

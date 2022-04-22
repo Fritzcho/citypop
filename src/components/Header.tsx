@@ -5,6 +5,12 @@ type props = {
     content: string,
 }
 
+/**
+ * Component header that displays a given string as a header.
+ * 
+ * @param param0 String that is displayed in the header
+ * @returns component
+ */
 export default function Header({content}:props) {
     return (
         <View style={styles.header}>

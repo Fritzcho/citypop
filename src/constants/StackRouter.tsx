@@ -6,5 +6,5 @@ export interface StackRouter {
 
 export interface StackRouterWParams {
     navigation: NavigationProp<ParamListBase>,
-    input: string
+    inputText: string
 }

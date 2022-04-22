@@ -9,6 +9,14 @@ type ButtonProps = {
   inputText: string
 }
 
+/**
+ * React-Native component SearchButton, a button that navigates the user to a view
+ * based on the given route prop and triggers a search. 
+ * Also sends the needed inputText, which is the usergiven searchstring, prop to the next view.
+ * 
+ * @param ButtonProps Containing props content, route, navigation and inputText for the button
+ * @returns component
+ */
 const SearchButton = ({content, route, navigation, inputText}:ButtonProps) => {
   return (
     <TouchableHighlight activeOpacity={0.5} underlayColor={'white'} 

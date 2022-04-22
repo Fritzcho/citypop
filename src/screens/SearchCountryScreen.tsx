@@ -4,12 +4,24 @@ import { Header, SearchButton} from '../components';
 import { StackRouter } from '../constants/StackRouter'; 
 
 
+/**
+ * React-Native component SearchCountryScreen where users can search for a country
+ * in the GeoNames API.
+ * 
+ * @param navigation StackRouter containing a navigation prop for navigation 
+ * @returns component
+ */
 export default function SearchCountryScreen({navigation}:StackRouter) {
   const [inputText, setText] = useState('');
+
+    /**
+   * Handle the change of text made by the user. 
+   */
   const searchHandler = (event: { nativeEvent: { text: any; }; }) => {
     let temp = event.nativeEvent.text;
     setText(temp);
   }
+  
   return(
       <View style={styles.container}>
         <View style={styles.headerContainer}>

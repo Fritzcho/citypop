@@ -8,6 +8,13 @@ type ButtonProps = {
     navigation: NavigationProp<ParamListBase>
 }
 
+/**
+ * React-Native component HiglightButton, a button that navigates the user to a page
+ * based on the given route prop.
+ * 
+ * @param ButtonProps Containing props content, route and navigation for the button
+ * @returns component
+ */
 const HighlightButton = ({content, route, navigation}:ButtonProps, ) => {
   return (
     <TouchableHighlight activeOpacity={0.5} underlayColor={'white'} 

@@ -9,6 +9,7 @@ import { CountryItem, Header } from '../components'
 import { ConnectionStrings } from '../helper/Variables';
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import { isLoaded } from 'expo-font';
+import { StackRouterWParams } from '../constants/StackRouter';
 
 type State = {
   geonames: Array<geonames>,
@@ -19,7 +20,18 @@ type State = {
   navigation: NavigationProp<ParamListBase>,
 }
 
-export default class CountriesScreen extends React.Component<any, State> {
+/**
+ * React-Native component countriesScreen displays a list of the top 20 most populated cities
+ * in a country, fetched from the GeoNames API based on a usergiven countryname. Users can click any
+ * listed city to be redirected to CityScreen with the selected cityname as a searchstring.
+ * 
+ * If no country is found based on the usergiven searchstring, displays "Country not found"
+ * 
+ * @param StackRouterWParams Type defining types for props
+ * @param State Type defining types for state variables
+ * 
+ */
+export default class CountriesScreen extends React.Component<StackRouterWParams, State> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -32,6 +44,9 @@ export default class CountriesScreen extends React.Component<any, State> {
     }
   }
 
+  /**
+   * Get most relevant countrycode based on usergiven countryname.
+   */
   async getCountry() {
     try {
       const response =  await fetch(
@@ -48,6 +63,10 @@ export default class CountriesScreen extends React.Component<any, State> {
     }
   }
 
+  /**
+   * Get list of most populated cities in a country, based on the countrycode
+   * previously extracted with the help of user-given countryname.
+   */
   async getCities() {
     try {
       const response =  await fetch(
@@ -62,6 +81,9 @@ export default class CountriesScreen extends React.Component<any, State> {
     }
   }
 
+  /**
+   * Run when component mounts
+   */
   async componentDidMount() {
     await this.getCountry();
     if (this.state.isLoading === true) {
@@ -94,56 +116,3 @@ export default class CountriesScreen extends React.Component<any, State> {
     );
   }
 }
-
-// export default function CountriesScreen({ route, navigation }: CountriesProps) {
-//   const [isLoading, setLoading] = useState(true);
-//   const [geonames, setGeonames] = useState([]);
-//   const [geo, setGeo] = useState<
-//     Array<{
-//       key: string,
-//       value: geonames, 
-//     }>
-//   >([]);
-//   const {inputText} = route.params; 
-
-//   const getGeo = async () => {
-//      try {
-//       const response =  await fetch(
-//         'http://api.geonames.org/searchJSON?username=weknowit&maxRows=10&q='
-//         +inputText);
-//       const json = await response.json();
-//       setGeonames(json.geonames);
-//       setGeo(json.geonames.map(function(item:geonames) {
-//         return {
-//           key: item.name,
-//           value: item,
-//         }
-//       }))
-//     } catch (error) {
-//       console.error(error);
-//     } finally {
-//       setLoading(false);
-//     }
-//   }
-
-//   useEffect(() => {
-//     getGeo();
-//   }, []);
-
-//   return (
-//     <View style={{ flex: 1, padding: 24 }}>
-//       <Header content={inputText}/>
-//       {/* {console.log(getCountryCode(geo[0].value))} */}
-
-//       {isLoading ? <ActivityIndicator/> : (
-//         <FlatList
-//           data={geonames}
-//           keyExtractor={( item: geonames) => item.name}
-//           renderItem={({ item }: ListRenderItemInfo<geonames>) => (
-//             <Text>{item.name}, {item.population}</Text>
-//           )}
-//         />
-//       )}
-//     </View>
-//   );
-// }

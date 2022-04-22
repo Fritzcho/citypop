@@ -8,6 +8,7 @@ import { geonames } from '../constants/Interfaces';
 import { Header } from '../components'
 import { ConnectionStrings } from '../helper/Variables';
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
+import { StackRouterWParams } from '../constants/StackRouter';
 
 type State = {
   geonames: Array<geonames>,
@@ -18,7 +19,16 @@ type State = {
   navigation: NavigationProp<ParamListBase>,
 }
 
-export default class CityScreen extends React.Component<any, State> {
+/**
+ * React-native component CityScreen displays a cityname and the population of that city,
+ * fetched from the GeoNames API based on a user-given cityname.
+ * 
+ * If no city is found based on the given cityname, displays "City not found".
+ * 
+ * @param StackRouterWParams Type defining types for props
+ * @param State Type defining types for state variables
+ */
+export default class CityScreen extends React.Component<StackRouterWParams, State> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -31,6 +41,9 @@ export default class CityScreen extends React.Component<any, State> {
     }
   }
 
+  /**
+   * Get city from API based on user-given searchstring.
+   */
   async getCity() {
     try {
       const response =  await fetch(
@@ -41,7 +54,6 @@ export default class CityScreen extends React.Component<any, State> {
     } catch (error) {
       console.error(error);
     } finally {
-        console.log(this.state.geonames);
         if (this.state.geonames.length === 0) {
             this.setState({cityName: "City not found"});
             this.setState({isLoading: true});
@@ -51,6 +63,9 @@ export default class CityScreen extends React.Component<any, State> {
     }
   }
 
+  /**
+   * Run when component mounts
+   */
   async componentDidMount() {
     await this.getCity();
     if (this.state.isLoading === false) {
