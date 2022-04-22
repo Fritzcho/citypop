@@ -11,7 +11,7 @@ find the most relevant results based on the searchstring given by the user.
 
 ## Tech/Framework used:
 * Node version 16.13.2
-* Expo expo-cli version 5.3.0
+* Expo client version 5.3.0
 * React-Native version 8.1.2
 
 ## Startup
