@@ -72,6 +72,7 @@ export default class CityScreen extends React.Component<Props, State> {
         this.setState({cityName: this.state.geonames[0].name});
         this.setState({population: this.state.geonames[0].population});
     }
+    this.setState({isLoading:false});
   }
 
   render () {
