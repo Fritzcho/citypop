@@ -18,13 +18,25 @@ type ButtonProps = {
  * @returns component
  */
 const SearchButton = ({content, route, navigation, inputText}:ButtonProps) => {
+  /**
+   * Check whether the string, inputText, consists of a correct format or not.
+   * If not, do not navigate to the next screen and display a relevan alert.
+   */
+  const checkString = () => { 
+    if (inputText) {
+      if (inputText.trim().length === 0 || /\d/.test(inputText)) {
+        alert('Please input letters');
+      } else {
+        navigation.navigate(route, {inputText: inputText});
+      }
+    } else {
+      alert('Please input some text');
+    }
+  }
+
   return (
     <TouchableHighlight activeOpacity={0.5} underlayColor={'white'} 
-      onPress={() =>
-        inputText
-          ? navigation.navigate(route, {inputText: inputText},)
-          : alert('Please Input the text')
-      }
+      onPress={checkString}
       style={styles.buttonHighlight}>
       <View style={styles.button}>
         <Text style={styles.text}>{content}</Text>

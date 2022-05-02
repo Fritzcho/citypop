@@ -22,7 +22,7 @@ const CountryItemHighlight = ({content, route, navigation, inputText}:ButtonProp
     <TouchableHighlight activeOpacity={0.5} underlayColor={'white'} 
       onPress={() =>
         inputText
-          ? navigation.navigate(route, {navigation, inputText})
+          ? navigation.navigate(route, {inputText})
           : alert('Please Input the text')
       }
       style={styles.buttonHighlight}>

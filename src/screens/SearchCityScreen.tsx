@@ -17,8 +17,8 @@ export default function SearchCityScreen({navigation}:StackRouter) {
    * Handle the change of text made by the user. 
    */
   const searchHandler = (event: { nativeEvent: { text: any; }; }) => {
-  let temp = event.nativeEvent.text;
-    setText(temp);
+    let temp = event.nativeEvent.text;
+      setText(temp);
   }
 
   return (

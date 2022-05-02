@@ -12,3 +12,4 @@ export type RootStackParamList = {
 };
 
 export type CountriesProps = NativeStackScreenProps<RootStackParamList, 'Countries'>;
+export type CityProps = NativeStackScreenProps<RootStackParamList, 'City'>

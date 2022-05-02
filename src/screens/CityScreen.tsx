@@ -8,7 +8,7 @@ import { geonames } from '../constants/Interfaces';
 import { Header } from '../components'
 import { ConnectionStrings } from '../helper/Variables';
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
-import { StackRouterWParams } from '../constants/StackRouter';
+import { CityProps as Props} from '../constants/RootStack';
 
 type State = {
   geonames: Array<geonames>,
@@ -28,7 +28,7 @@ type State = {
  * @param StackRouterWParams Type defining types for props
  * @param State Type defining types for state variables
  */
-export default class CityScreen extends React.Component<StackRouterWParams, State> {
+export default class CityScreen extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {

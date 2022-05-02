@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   ActivityIndicator, 
   FlatList, 
@@ -8,14 +8,13 @@ import { geonames } from '../constants/Interfaces';
 import { CountryItem, Header } from '../components'
 import { ConnectionStrings } from '../helper/Variables';
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
-import { isLoaded } from 'expo-font';
-import { StackRouterWParams } from '../constants/StackRouter';
+import { CountriesProps as Props } from '../constants/RootStack';
 
 type State = {
   geonames: Array<geonames>,
   isLoading: boolean,
   inputText: string,
-  countryCode: string,
+  cCode: string,
   countryName: string,
   navigation: NavigationProp<ParamListBase>,
 }
@@ -31,14 +30,14 @@ type State = {
  * @param State Type defining types for state variables
  * 
  */
-export default class CountriesScreen extends React.Component<StackRouterWParams, State> {
-  constructor(props: any) {
+export default class CountriesScreen extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       geonames: [],
       isLoading: true,
       inputText: props.route.params.inputText,
-      countryCode: "",
+      cCode: "",
       countryName: "",
       navigation: props.navigation,
     }
@@ -71,7 +70,7 @@ export default class CountriesScreen extends React.Component<StackRouterWParams,
     try {
       const response =  await fetch(
         ConnectionStrings.GET_CITIES
-        +this.state.countryCode);
+        +this.state.cCode);
       const json = await response.json();
       this.setState({geonames: json.geonames});
     } catch (error) {
@@ -87,7 +86,7 @@ export default class CountriesScreen extends React.Component<StackRouterWParams,
   async componentDidMount() {
     await this.getCountry();
     if (this.state.isLoading === true) {
-      this.setState({countryCode: this.state.geonames[0].countryCode});
+      this.setState({cCode: this.state.geonames[0].countryCode});
       this.setState({countryName: this.state.geonames[0].countryName});
       await this.getCities();
     }
@@ -97,7 +96,6 @@ export default class CountriesScreen extends React.Component<StackRouterWParams,
     return(
       <View style={{ flex: 1, padding: 24 }}>
         <Header content={this.state.countryName}/>
-
         {this.state.isLoading ? <ActivityIndicator  size="large" color="#0000ff"/> : (
           <FlatList
             data={this.state.geonames}
